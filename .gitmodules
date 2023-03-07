@@ -1,0 +1,3 @@
+[submodule "adios-backend"]
+	path = adios-backend
+	url = https://github.com/iosif2/adios-backend.git
