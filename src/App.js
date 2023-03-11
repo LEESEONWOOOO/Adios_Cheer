@@ -6,12 +6,14 @@ import Attendance from './Attendance';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { useState } from 'react';
+import GoogleComponent from './GoogleComponent';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
 
-  const handleLogin = (id, password) => {
+  const handleLogin = (i) => {
+    /*
     const user = users.find(user => user.id === id && user.password === password);
     if (user) {
       setIsLoggedIn(true);
@@ -19,7 +21,7 @@ function App() {
       // 로그인 정보가 일치하지 않을 경우 회원가입 화면으로 이동
       setView('signup');
       alert('Invalid ID or password.');
-    }
+    }*/
   };
 
   const handleSignup = (id, password) => {
@@ -49,6 +51,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <GoogleComponent setIsLoggedIn={setIsLoggedIn} />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -74,7 +77,6 @@ function App() {
           {renderView()}
         </>
       )}
-
     </div>
   );
 }
