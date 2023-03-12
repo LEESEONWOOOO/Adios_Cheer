@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import QRScanner from './QRScanner';
+import { googleLogout } from '@react-oauth/google';
 
-function AttendanceTracker() {
+
+function Attendance(props) {
   const [attendanceList, setAttendanceList] = useState([]);
 
   const handleScan = (data) => {
@@ -10,9 +12,20 @@ function AttendanceTracker() {
     setAttendanceList([...attendanceList, attendanceData]);
   };
 
+  const handleLogout = () => {
+    props.setIsLoggedIn(false);
+    localStorage.removeItem('token')
+    googleLogout();
+  }
+
   return (
     <div>
-      <QRScanner onScan={handleScan} />
+      <ul>
+      <li><span>{props.loginInfo}</span></li>
+      <li><QRScanner onScan={handleScan}/></li>
+      <li><button onClick={handleLogout}>Logout</button></li>
+      </ul>
+      
       <ul>
         {attendanceList.map((attendance) => (
           <li key={attendance.timestamp}>
@@ -24,4 +37,4 @@ function AttendanceTracker() {
   );
 }
 
-export default AttendanceTracker;
+export default Attendance;

@@ -8,9 +8,9 @@ function QRCode(props) {
 
   const qrCodeUrl = encodeURIComponent(props.url);
   const qrCodeData = `https://chart.googleapis.com/chart?chs=${qrCodeSize}x${qrCodeSize}&chld=${qrCodeErrorCorrectionLevel}|0&cht=qr&chl=${qrCodeUrl}&choe=UTF-8&chf=bg,s,${qrCodeBackgroundColor}|qr,${qrCodeForegroundColor}`;
-
+  
   return (
-    <img src={qrCodeData} alt="QR Code" />
+      <img src={qrCodeData} alt="QR Code" />
   );
 }
 

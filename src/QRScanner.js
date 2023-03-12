@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import QrReader from 'react-qr-scanner';
 
 function QRScanner(props) {
@@ -10,14 +11,15 @@ function QRScanner(props) {
       props.onScan(data); // 상위 컴포넌트로 데이터 전달
     }
   };
-
   return (
-    <QrReader
-      delay={300}
-      onError={console.error}
-      onScan={handleScan}
-      style={{ width: '100%' }}
-    />
+    <div style={{textAlign: 'center', display: 'flex'}}>
+      <QrReader
+        delay={300}
+        onError={console.error}
+        onScan={handleScan}
+        style={{ width: '100%' }}
+      />
+    </div>
   );
 }
 
